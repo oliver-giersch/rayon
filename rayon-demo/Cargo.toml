@@ -4,6 +4,10 @@ version = "0.0.0"
 authors = ["Niko Matsakis <niko@alum.mit.edu>"]
 publish = false
 
+[features]
+use-debra = ["rayon/use-debra"]
+use-hazptr = ["rayon/use-hazptr"]
+
 [dependencies]
 rayon = { path = "../" }
 cgmath = "0.17"

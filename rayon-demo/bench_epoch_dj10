@@ -1,0 +1,6 @@
+
+running 1 test
+test tsp::bench::dj10                                                   ... bench:  13,129,577 ns/iter (+/- 141,255)
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 1 measured; 119 filtered out
+

@@ -32,7 +32,11 @@ use std::io;
 use std::marker::PhantomData;
 use std::str::FromStr;
 
-extern crate crossbeam_deque;
+#[cfg(not(any(feature = "use-debra", feature = "use-hazptr")))]
+extern crate crossbeam_deque_epoch as crossbeam_deque;
+#[cfg(any(feature = "use-debra", feature = "use-hazptr"))]
+extern crate crossbeam_deque_reclaim as crossbeam_deque;
+
 extern crate crossbeam_queue;
 extern crate crossbeam_utils;
 #[cfg(any(debug_assertions, rayon_unstable))]
