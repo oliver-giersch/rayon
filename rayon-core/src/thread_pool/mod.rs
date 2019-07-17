@@ -84,9 +84,14 @@ impl ThreadPool {
     #[cfg(rayon_unstable)]
     pub fn global() -> &'static Arc<ThreadPool> {
         lazy_static! {
-            static ref DEFAULT_THREAD_POOL: Arc<ThreadPool> = Arc::new(ThreadPool {
-                registry: Registry::global()
-            });
+            static ref DEFAULT_THREAD_POOL: Arc<ThreadPool> = {
+                #[cfg(feature = "use-hazptr")]
+                CONFIG.init_once(Config::with_params(128, 0));
+
+                Arc::new(ThreadPool {
+                    registry: Registry::global(),
+                })
+            };
         }
 
         &DEFAULT_THREAD_POOL

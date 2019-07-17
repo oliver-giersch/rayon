@@ -105,6 +105,9 @@ use std::sync::atomic::{self, AtomicIsize, AtomicPtr, AtomicUsize, Ordering};
 use std::sync::Arc;
 
 #[cfg(not(feature = "use-hazptr"))]
+pub use debra::{Config, CONFIG};
+
+#[cfg(not(feature = "use-hazptr"))]
 use debra::{self as reclaimer, Debra as Reclaimer, Guard, Owned};
 #[cfg(feature = "use-hazptr")]
 use hazptr::{self as reclaimer, Guard, Owned, HP as Reclaimer};
@@ -300,6 +303,25 @@ pub struct Worker<T> {
 
 unsafe impl<T: Send> Send for Worker<T> {}
 
+trait UnwrapUnchecked {
+    type Item;
+
+    unsafe fn unwrap_unchecked(self) -> Self::Item;
+}
+
+impl<T> UnwrapUnchecked for Option<T> {
+    type Item = T;
+
+    #[inline]
+    unsafe fn unwrap_unchecked(self) -> Self::Item {
+        use std::hint::unreachable_unchecked;
+        match self {
+            Some(v) => v,
+            None => unreachable_unchecked(),
+        }
+    }
+}
+
 impl<T> Worker<T> {
     /// Creates a FIFO worker queue.
     ///
@@ -313,6 +335,9 @@ impl<T> Worker<T> {
     /// let w = Worker::<i32>::new_fifo();
     /// ```
     pub fn new_fifo() -> Worker<T> {
+        #[cfg(not(feature = "use-hazptr"))]
+        CONFIG.init_once(|| Config::with_params(128, 0));
+
         let buffer = Buffer::alloc(MIN_CAP);
 
         let inner = Arc::new(CachePadded::new(Inner {
@@ -341,6 +366,9 @@ impl<T> Worker<T> {
     /// let w = Worker::<i32>::new_lifo();
     /// ```
     pub fn new_lifo() -> Worker<T> {
+        #[cfg(not(feature = "use-hazptr"))]
+        CONFIG.init_once(|| Config::with_params(128, 0));
+
         let buffer = Buffer::alloc(MIN_CAP);
 
         let inner = Arc::new(CachePadded::new(Inner {
@@ -398,7 +426,7 @@ impl<T> Worker<T> {
             .inner
             .buffer
             .swap(Owned::new(new), Ordering::Release)
-            .unwrap();
+            .unwrap_unchecked();
 
         old.retire_unchecked();
 
@@ -716,9 +744,14 @@ impl<T> Stealer<T> {
             return Steal::Empty;
         }
 
-        // Load the buffer and read the task at the front.
-        let buffer = self.inner.buffer.load(Ordering::Acquire, guard).unwrap();
-        let task = unsafe { buffer.read(f) };
+        let task = unsafe {
+            // Load the buffer and read the task at the front.
+            self.inner
+                .buffer
+                .load(Ordering::Acquire, guard)
+                .unwrap_unchecked()
+                .read(f)
+        };
 
         // Try incrementing the front index to steal the task.
         if self
@@ -791,7 +824,12 @@ impl<T> Stealer<T> {
         let mut dest_b = dest.inner.back.load(Ordering::Relaxed);
 
         // Load the buffer.
-        let buffer = self.inner.buffer.load(Ordering::Acquire, guard).unwrap();
+        let buffer = unsafe {
+            self.inner
+                .buffer
+                .load(Ordering::Acquire, guard)
+                .unwrap_unchecked()
+        };
 
         match self.flavor {
             // Steal a batch of tasks from the front at once.
@@ -966,7 +1004,12 @@ impl<T> Stealer<T> {
         let mut dest_b = dest.inner.back.load(Ordering::Relaxed);
 
         // Load the buffer
-        let buffer = self.inner.buffer.load(Ordering::Acquire, guard).unwrap();
+        let buffer = unsafe {
+            self.inner
+                .buffer
+                .load(Ordering::Acquire, guard)
+                .unwrap_unchecked()
+        };
 
         // Read the task at the front.
         let mut task = unsafe { buffer.read(f) };

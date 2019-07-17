@@ -5,6 +5,10 @@ use std::path::Path;
 use std::process::Command;
 
 fn main() {
+    let mut args: Vec<_> = env::args().skip(1).collect();
+    args.sort();
+    args.dedup();
+
     let parent = env::current_dir()
         .expect("failed to read current dir")
         .join("results");
@@ -13,12 +17,23 @@ fn main() {
     let debra = parent.join("bench_w_debra");
     let hazptr = parent.join("bench_w_hazptr");
 
-    println!("running rayon benchmarks with epoch...");
-    run_bench(&epoch, None);
-    println!("running rayon benchmarks with debra...");
-    run_bench(&debra, Some(&["use-debra"]));
-    println!("running rayon benchmarks with hazptr...");
-    run_bench(&hazptr, Some(&["use-hazptr"]));
+    for arg in args {
+        match arg.as_ref() {
+            "epoch" => {
+                println!("running rayon benchmarks with epoch...");
+                run_bench(&epoch, None);
+            }
+            "debra" => {
+                println!("running rayon benchmarks with debra...");
+                run_bench(&debra, Some(&["use-debra"]));
+            }
+            "hazptr" => {
+                println!("running rayon benchmarks with hazptr...");
+                run_bench(&hazptr, Some(&["use-hazptr"]));
+            }
+            _ => panic!("invalid argument"),
+        }
+    }
 }
 
 fn run_bench(outfile: &Path, args: Option<&[&str]>) {
@@ -33,6 +48,7 @@ fn run_bench(outfile: &Path, args: Option<&[&str]>) {
     let out = cmd
         .arg("--package")
         .arg("rayon-demo")
+        //.arg("dj10")
         .output()
         .expect("failed to run benchmarks");
 

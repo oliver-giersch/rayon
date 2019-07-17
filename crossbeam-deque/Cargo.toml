@@ -22,13 +22,13 @@ keywords = ["chase-lev", "lock-free", "scheduler", "scheduling"]
 categories = ["algorithms", "concurrency", "data-structures"]
 license = "MIT/Apache-2.0"
 repository = "https://github.com/crossbeam-rs/crossbeam"
-build = "build.rs"
 
 [features]
 use-hazptr = ["hazptr"]
 
 [dependencies]
-debra = { git = "https://github.com/oliver-giersch/debra" }
+debra = { path = "../../debra", features = ["bag-size-4"] }
+#debra = { git = "https://github.com/oliver-giersch/debra", features = ["bag-size-1"] }
 hazptr = { git = "https://github.com/oliver-giersch/hazptr", optional = true }
 
 [dependencies.crossbeam-utils]

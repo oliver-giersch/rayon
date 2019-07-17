@@ -4,122 +4,122 @@ test life::test_life ... ignored
 test matmul::test_matmul ... ignored
 test matmul::test_splayed_counter ... ignored
 test mergesort::test_merge_sort ... ignored
-test factorial::factorial_iterator                                      ... bench:  20,606,262 ns/iter (+/- 9,020)
-test factorial::factorial_join                                          ... bench:   2,716,713 ns/iter (+/- 144,826)
-test factorial::factorial_par_iter                                      ... bench:   2,684,344 ns/iter (+/- 94,129)
-test factorial::factorial_recursion                                     ... bench:   3,529,968 ns/iter (+/- 8,855)
-test fibonacci::fibonacci_iterative                                     ... bench:           5 ns/iter (+/- 0)
-test fibonacci::fibonacci_join_1_2                                      ... bench:  46,719,451 ns/iter (+/- 298,089)
-test fibonacci::fibonacci_join_2_1                                      ... bench:  44,941,651 ns/iter (+/- 345,754)
-test fibonacci::fibonacci_recursive                                     ... bench:  11,491,698 ns/iter (+/- 174,706)
-test fibonacci::fibonacci_split_iterative                               ... bench:      32,489 ns/iter (+/- 727)
-test fibonacci::fibonacci_split_recursive                               ... bench:   6,225,611 ns/iter (+/- 186,985)
-test find::size1::parallel_find_common                                  ... bench:       8,845 ns/iter (+/- 244)
-test find::size1::parallel_find_first                                   ... bench:       6,024 ns/iter (+/- 455)
-test find::size1::parallel_find_last                                    ... bench:   2,751,541 ns/iter (+/- 182,887)
-test find::size1::parallel_find_middle                                  ... bench:   1,899,451 ns/iter (+/- 385,451)
-test find::size1::parallel_find_missing                                 ... bench:   2,848,116 ns/iter (+/- 64,863)
-test find::size1::serial_find_common                                    ... bench:       1,991 ns/iter (+/- 8)
+test factorial::factorial_iterator                                      ... bench:  22,844,620 ns/iter (+/- 8,442)
+test factorial::factorial_join                                          ... bench:   3,098,437 ns/iter (+/- 153,386)
+test factorial::factorial_par_iter                                      ... bench:   3,087,017 ns/iter (+/- 215,834)
+test factorial::factorial_recursion                                     ... bench:   3,912,406 ns/iter (+/- 11,926)
+test fibonacci::fibonacci_iterative                                     ... bench:           6 ns/iter (+/- 0)
+test fibonacci::fibonacci_join_1_2                                      ... bench:  51,758,919 ns/iter (+/- 286,573)
+test fibonacci::fibonacci_join_2_1                                      ... bench:  49,699,108 ns/iter (+/- 238,710)
+test fibonacci::fibonacci_recursive                                     ... bench:  12,722,012 ns/iter (+/- 384,011)
+test fibonacci::fibonacci_split_iterative                               ... bench:      35,770 ns/iter (+/- 338)
+test fibonacci::fibonacci_split_recursive                               ... bench:   6,894,536 ns/iter (+/- 45,069)
+test find::size1::parallel_find_common                                  ... bench:      10,335 ns/iter (+/- 586)
+test find::size1::parallel_find_first                                   ... bench:       6,713 ns/iter (+/- 488)
+test find::size1::parallel_find_last                                    ... bench:   3,008,399 ns/iter (+/- 232,379)
+test find::size1::parallel_find_middle                                  ... bench:   1,999,448 ns/iter (+/- 163,511)
+test find::size1::parallel_find_missing                                 ... bench:   3,095,086 ns/iter (+/- 66,598)
+test find::size1::serial_find_common                                    ... bench:       2,205 ns/iter (+/- 3)
 test find::size1::serial_find_first                                     ... bench:           1 ns/iter (+/- 0)
-test find::size1::serial_find_last                                      ... bench:   3,873,592 ns/iter (+/- 276,689)
-test find::size1::serial_find_middle                                    ... bench:   2,469,823 ns/iter (+/- 40,327)
-test find::size1::serial_find_missing                                   ... bench:   3,892,389 ns/iter (+/- 256,602)
-test join_microbench::increment_all                                     ... bench:      41,787 ns/iter (+/- 549)
-test join_microbench::increment_all_atomized                            ... bench:   2,417,983 ns/iter (+/- 11,033)
-test join_microbench::increment_all_max                                 ... bench:      88,790 ns/iter (+/- 1,694)
-test join_microbench::increment_all_min                                 ... bench:      36,578 ns/iter (+/- 558)
-test join_microbench::increment_all_serialized                          ... bench:      39,189 ns/iter (+/- 73)
-test join_microbench::join_recursively                                  ... bench:     844,095 ns/iter (+/- 6,325)
-test life::bench::as_parallel_generations                               ... bench: 555,287,321 ns/iter (+/- 8,336,125)
-test life::bench::generations                                           ... bench:  96,797,154 ns/iter (+/- 1,095,207)
-test life::bench::parallel_generations                                  ... bench:  41,055,367 ns/iter (+/- 959,398)
-test map_collect::i_mod_10_to_i::with_collect                           ... bench:   5,493,604 ns/iter (+/- 233,255)
-test map_collect::i_mod_10_to_i::with_fold                              ... bench:   2,489,375 ns/iter (+/- 76,395)
-test map_collect::i_mod_10_to_i::with_fold_vec                          ... bench:   2,911,175 ns/iter (+/- 56,942)
-test map_collect::i_mod_10_to_i::with_linked_list_collect               ... bench:  12,120,752 ns/iter (+/- 1,016,097)
-test map_collect::i_mod_10_to_i::with_linked_list_collect_vec           ... bench:   5,622,480 ns/iter (+/- 123,087)
-test map_collect::i_mod_10_to_i::with_linked_list_collect_vec_sized     ... bench:   5,650,235 ns/iter (+/- 209,550)
-test map_collect::i_mod_10_to_i::with_linked_list_map_reduce_vec_sized  ... bench:   5,661,002 ns/iter (+/- 150,863)
-test map_collect::i_mod_10_to_i::with_mutex                             ... bench:  81,514,910 ns/iter (+/- 1,294,829)
-test map_collect::i_mod_10_to_i::with_mutex_vec                         ... bench:   6,740,275 ns/iter (+/- 437,936)
-test map_collect::i_mod_10_to_i::with_vec_vec_sized                     ... bench:   5,731,462 ns/iter (+/- 131,900)
-test map_collect::i_to_i::with_collect                                  ... bench:   9,912,184 ns/iter (+/- 1,562,223)
-test map_collect::i_to_i::with_fold                                     ... bench:  36,619,094 ns/iter (+/- 3,760,786)
-test map_collect::i_to_i::with_fold_vec                                 ... bench:  37,593,888 ns/iter (+/- 2,792,672)
-test map_collect::i_to_i::with_linked_list_collect                      ... bench:  20,011,492 ns/iter (+/- 1,281,343)
-test map_collect::i_to_i::with_linked_list_collect_vec                  ... bench:  16,881,666 ns/iter (+/- 97,496)
-test map_collect::i_to_i::with_linked_list_collect_vec_sized            ... bench:   9,460,167 ns/iter (+/- 87,237)
-test map_collect::i_to_i::with_linked_list_map_reduce_vec_sized         ... bench:   9,434,697 ns/iter (+/- 717,509)
-test map_collect::i_to_i::with_mutex                                    ... bench: 110,914,150 ns/iter (+/- 3,600,549)
-test map_collect::i_to_i::with_mutex_vec                                ... bench:  20,321,430 ns/iter (+/- 1,252,850)
-test map_collect::i_to_i::with_vec_vec_sized                            ... bench:   9,543,923 ns/iter (+/- 325,286)
-test matmul::bench::bench_matmul_strassen                               ... bench:   6,452,348 ns/iter (+/- 149,117)
-test mergesort::bench::merge_sort_par_bench                             ... bench:  10,151,109 ns/iter (+/- 439,205)
-test mergesort::bench::merge_sort_seq_bench                             ... bench:  32,732,423 ns/iter (+/- 455,462)
-test nbody::bench::nbody_par                                            ... bench:  21,852,595 ns/iter (+/- 15,744,293)
-test nbody::bench::nbody_par_bridge                                     ... bench:  21,804,905 ns/iter (+/- 15,145,484)
-test nbody::bench::nbody_parreduce                                      ... bench:  50,973,483 ns/iter (+/- 14,981,054)
-test nbody::bench::nbody_seq                                            ... bench:  54,271,936 ns/iter (+/- 40,700,832)
-test pythagoras::euclid_faux_serial                                     ... bench:  40,588,362 ns/iter (+/- 148,686)
-test pythagoras::euclid_parallel_full                                   ... bench:  76,634,329 ns/iter (+/- 372,040)
-test pythagoras::euclid_parallel_one                                    ... bench:  14,140,079 ns/iter (+/- 346,550)
-test pythagoras::euclid_parallel_outer                                  ... bench:  14,019,557 ns/iter (+/- 238,695)
-test pythagoras::euclid_parallel_weightless                             ... bench:  14,328,146 ns/iter (+/- 330,658)
-test pythagoras::euclid_serial                                          ... bench:  36,966,031 ns/iter (+/- 799,340)
-test quicksort::bench::quick_sort_par_bench                             ... bench:  16,971,071 ns/iter (+/- 468,168)
-test quicksort::bench::quick_sort_seq_bench                             ... bench:  41,535,244 ns/iter (+/- 549,529)
-test quicksort::bench::quick_sort_splitter                              ... bench:  21,307,354 ns/iter (+/- 927,732)
-test sieve::bench::sieve_chunks                                         ... bench:   8,966,642 ns/iter (+/- 47,643)
-test sieve::bench::sieve_parallel                                       ... bench:   4,948,380 ns/iter (+/- 114,463)
-test sieve::bench::sieve_serial                                         ... bench:  25,127,495 ns/iter (+/- 682,124)
-test sort::demo_merge_sort_ascending                                    ... bench:     151,035 ns/iter (+/- 16,034) = 2648 MB/s
-test sort::demo_merge_sort_big                                          ... bench:  11,158,033 ns/iter (+/- 376,451) = 573 MB/s
-test sort::demo_merge_sort_descending                                   ... bench:     177,616 ns/iter (+/- 12,538) = 2252 MB/s
-test sort::demo_merge_sort_mostly_ascending                             ... bench:     399,331 ns/iter (+/- 10,477) = 1001 MB/s
-test sort::demo_merge_sort_mostly_descending                            ... bench:     442,924 ns/iter (+/- 67,542) = 903 MB/s
-test sort::demo_merge_sort_random                                       ... bench:   1,753,325 ns/iter (+/- 226,537) = 228 MB/s
-test sort::demo_merge_sort_strings                                      ... bench:   5,749,787 ns/iter (+/- 403,036) = 139 MB/s
-test sort::demo_quick_sort_big                                          ... bench:   6,436,247 ns/iter (+/- 286,463) = 994 MB/s
-test sort::demo_quick_sort_mostly_ascending                             ... bench:  21,216,455 ns/iter (+/- 232,094) = 18 MB/s
-test sort::demo_quick_sort_mostly_descending                            ... bench:  13,615,166 ns/iter (+/- 362,969) = 29 MB/s
-test sort::demo_quick_sort_random                                       ... bench:   1,529,960 ns/iter (+/- 57,043) = 261 MB/s
-test sort::demo_quick_sort_strings                                      ... bench:   6,505,618 ns/iter (+/- 288,625) = 122 MB/s
-test sort::par_sort_ascending                                           ... bench:      80,975 ns/iter (+/- 364) = 4939 MB/s
-test sort::par_sort_big                                                 ... bench:  12,812,329 ns/iter (+/- 300,926) = 499 MB/s
-test sort::par_sort_descending                                          ... bench:     130,618 ns/iter (+/- 16,603) = 3062 MB/s
-test sort::par_sort_expensive                                           ... bench:  60,214,438 ns/iter (+/- 1,182,354) = 6 MB/s
-test sort::par_sort_mostly_ascending                                    ... bench:     415,183 ns/iter (+/- 5,401) = 963 MB/s
-test sort::par_sort_mostly_descending                                   ... bench:     440,747 ns/iter (+/- 91,557) = 907 MB/s
-test sort::par_sort_random                                              ... bench:   1,351,291 ns/iter (+/- 15,880) = 296 MB/s
-test sort::par_sort_strings                                             ... bench:   4,806,778 ns/iter (+/- 209,199) = 166 MB/s
-test sort::par_sort_unstable_ascending                                  ... bench:      47,860 ns/iter (+/- 55) = 8357 MB/s
-test sort::par_sort_unstable_big                                        ... bench:   5,274,070 ns/iter (+/- 151,623) = 1213 MB/s
-test sort::par_sort_unstable_descending                                 ... bench:      71,923 ns/iter (+/- 188) = 5561 MB/s
-test sort::par_sort_unstable_expensive                                  ... bench:  70,780,590 ns/iter (+/- 823,065) = 5 MB/s
-test sort::par_sort_unstable_mostly_ascending                           ... bench:     333,095 ns/iter (+/- 6,991) = 1200 MB/s
-test sort::par_sort_unstable_mostly_descending                          ... bench:     351,559 ns/iter (+/- 20,202) = 1137 MB/s
-test sort::par_sort_unstable_random                                     ... bench:     758,736 ns/iter (+/- 19,350) = 527 MB/s
-test sort::par_sort_unstable_strings                                    ... bench:   4,457,598 ns/iter (+/- 323,182) = 179 MB/s
-test str_split::parallel_space_char                                     ... bench:   1,389,147 ns/iter (+/- 44,300)
-test str_split::parallel_space_fn                                       ... bench:     859,379 ns/iter (+/- 12,417)
-test str_split::serial_space_char                                       ... bench:   3,119,731 ns/iter (+/- 10,297)
-test str_split::serial_space_fn                                         ... bench:   1,646,079 ns/iter (+/- 2,045)
-test str_split::serial_space_str                                        ... bench:   2,373,877 ns/iter (+/- 36,461)
-test tsp::bench::dj10                                                   ... bench:  14,312,913 ns/iter (+/- 697,863)
-test vec_collect::vec_i::with_collect                                   ... bench:   2,090,983 ns/iter (+/- 44,688)
-test vec_collect::vec_i::with_collect_into_vec                          ... bench:   2,087,533 ns/iter (+/- 43,160)
-test vec_collect::vec_i::with_collect_into_vec_reused                   ... bench:   2,095,616 ns/iter (+/- 103,674)
-test vec_collect::vec_i::with_fold                                      ... bench:  36,752,545 ns/iter (+/- 4,544,908)
-test vec_collect::vec_i::with_linked_list_collect_vec                   ... bench:  26,989,840 ns/iter (+/- 883,478)
-test vec_collect::vec_i::with_linked_list_collect_vec_sized             ... bench:  26,648,417 ns/iter (+/- 388,573)
-test vec_collect::vec_i::with_linked_list_map_reduce_vec_sized          ... bench:  26,707,873 ns/iter (+/- 347,831)
-test vec_collect::vec_i::with_vec_vec_sized                             ... bench:  26,727,510 ns/iter (+/- 525,331)
-test vec_collect::vec_i_filtered::with_collect                          ... bench:  27,967,250 ns/iter (+/- 1,184,728)
-test vec_collect::vec_i_filtered::with_fold                             ... bench:  39,151,697 ns/iter (+/- 3,954,672)
-test vec_collect::vec_i_filtered::with_linked_list_collect_vec          ... bench:  31,927,423 ns/iter (+/- 1,466,915)
-test vec_collect::vec_i_filtered::with_linked_list_collect_vec_sized    ... bench:  31,556,543 ns/iter (+/- 635,866)
-test vec_collect::vec_i_filtered::with_linked_list_map_reduce_vec_sized ... bench:  27,930,950 ns/iter (+/- 607,053)
-test vec_collect::vec_i_filtered::with_vec_vec_sized                    ... bench:  28,237,141 ns/iter (+/- 508,674)
+test find::size1::serial_find_last                                      ... bench:   3,999,907 ns/iter (+/- 85,291)
+test find::size1::serial_find_middle                                    ... bench:   2,667,377 ns/iter (+/- 44,152)
+test find::size1::serial_find_missing                                   ... bench:   4,000,978 ns/iter (+/- 123,537)
+test join_microbench::increment_all                                     ... bench:      45,962 ns/iter (+/- 1,539)
+test join_microbench::increment_all_atomized                            ... bench:   2,627,121 ns/iter (+/- 13,583)
+test join_microbench::increment_all_max                                 ... bench:      96,463 ns/iter (+/- 1,300)
+test join_microbench::increment_all_min                                 ... bench:      40,747 ns/iter (+/- 767)
+test join_microbench::increment_all_serialized                          ... bench:      43,345 ns/iter (+/- 64)
+test join_microbench::join_recursively                                  ... bench:     937,289 ns/iter (+/- 12,998)
+test life::bench::as_parallel_generations                               ... bench: 591,887,123 ns/iter (+/- 3,579,592)
+test life::bench::generations                                           ... bench: 117,675,730 ns/iter (+/- 332,061)
+test life::bench::parallel_generations                                  ... bench:  48,508,288 ns/iter (+/- 861,236)
+test map_collect::i_mod_10_to_i::with_collect                           ... bench:   5,707,441 ns/iter (+/- 181,937)
+test map_collect::i_mod_10_to_i::with_fold                              ... bench:   2,785,867 ns/iter (+/- 68,568)
+test map_collect::i_mod_10_to_i::with_fold_vec                          ... bench:   3,227,512 ns/iter (+/- 167,075)
+test map_collect::i_mod_10_to_i::with_linked_list_collect               ... bench:  13,139,000 ns/iter (+/- 1,198,103)
+test map_collect::i_mod_10_to_i::with_linked_list_collect_vec           ... bench:   6,206,863 ns/iter (+/- 148,784)
+test map_collect::i_mod_10_to_i::with_linked_list_collect_vec_sized     ... bench:   6,274,404 ns/iter (+/- 192,476)
+test map_collect::i_mod_10_to_i::with_linked_list_map_reduce_vec_sized  ... bench:   6,267,868 ns/iter (+/- 163,414)
+test map_collect::i_mod_10_to_i::with_mutex                             ... bench:  91,201,612 ns/iter (+/- 3,987,091)
+test map_collect::i_mod_10_to_i::with_mutex_vec                         ... bench:   8,774,629 ns/iter (+/- 1,077,617)
+test map_collect::i_mod_10_to_i::with_vec_vec_sized                     ... bench:   6,358,626 ns/iter (+/- 178,815)
+test map_collect::i_to_i::with_collect                                  ... bench:   9,000,527 ns/iter (+/- 114,739)
+test map_collect::i_to_i::with_fold                                     ... bench:  39,824,496 ns/iter (+/- 4,425,672)
+test map_collect::i_to_i::with_fold_vec                                 ... bench:  40,409,962 ns/iter (+/- 3,357,405)
+test map_collect::i_to_i::with_linked_list_collect                      ... bench:  21,201,319 ns/iter (+/- 1,527,559)
+test map_collect::i_to_i::with_linked_list_collect_vec                  ... bench:  18,677,490 ns/iter (+/- 129,519)
+test map_collect::i_to_i::with_linked_list_collect_vec_sized            ... bench:  10,396,366 ns/iter (+/- 176,192)
+test map_collect::i_to_i::with_linked_list_map_reduce_vec_sized         ... bench:  10,467,849 ns/iter (+/- 193,811)
+test map_collect::i_to_i::with_mutex                                    ... bench: 121,225,710 ns/iter (+/- 3,857,356)
+test map_collect::i_to_i::with_mutex_vec                                ... bench:  24,338,305 ns/iter (+/- 3,412,653)
+test map_collect::i_to_i::with_vec_vec_sized                            ... bench:  11,625,189 ns/iter (+/- 254,454)
+test matmul::bench::bench_matmul_strassen                               ... bench:   7,136,368 ns/iter (+/- 193,512)
+test mergesort::bench::merge_sort_par_bench                             ... bench:  11,178,524 ns/iter (+/- 644,075)
+test mergesort::bench::merge_sort_seq_bench                             ... bench:  36,034,910 ns/iter (+/- 44,130)
+test nbody::bench::nbody_par                                            ... bench:  24,840,971 ns/iter (+/- 17,588,725)
+test nbody::bench::nbody_par_bridge                                     ... bench:  24,162,738 ns/iter (+/- 16,839,802)
+test nbody::bench::nbody_parreduce                                      ... bench:  56,071,755 ns/iter (+/- 16,738,458)
+test nbody::bench::nbody_seq                                            ... bench:  55,828,894 ns/iter (+/- 44,225,771)
+test pythagoras::euclid_faux_serial                                     ... bench:  44,535,460 ns/iter (+/- 59,245)
+test pythagoras::euclid_parallel_full                                   ... bench:  77,169,184 ns/iter (+/- 267,800)
+test pythagoras::euclid_parallel_one                                    ... bench:  15,825,122 ns/iter (+/- 385,992)
+test pythagoras::euclid_parallel_outer                                  ... bench:  15,716,158 ns/iter (+/- 503,726)
+test pythagoras::euclid_parallel_weightless                             ... bench:  15,000,834 ns/iter (+/- 267,772)
+test pythagoras::euclid_serial                                          ... bench:  35,717,888 ns/iter (+/- 136,594)
+test quicksort::bench::quick_sort_par_bench                             ... bench:  16,925,681 ns/iter (+/- 314,412)
+test quicksort::bench::quick_sort_seq_bench                             ... bench:  41,526,398 ns/iter (+/- 125,880)
+test quicksort::bench::quick_sort_splitter                              ... bench:  21,558,676 ns/iter (+/- 1,161,696)
+test sieve::bench::sieve_chunks                                         ... bench:   9,063,329 ns/iter (+/- 20,562)
+test sieve::bench::sieve_parallel                                       ... bench:   4,961,720 ns/iter (+/- 108,961)
+test sieve::bench::sieve_serial                                         ... bench:  24,682,609 ns/iter (+/- 197,761)
+test sort::demo_merge_sort_ascending                                    ... bench:     152,811 ns/iter (+/- 16,391) = 2617 MB/s
+test sort::demo_merge_sort_big                                          ... bench:  11,508,712 ns/iter (+/- 664,524) = 556 MB/s
+test sort::demo_merge_sort_descending                                   ... bench:     179,655 ns/iter (+/- 13,365) = 2226 MB/s
+test sort::demo_merge_sort_mostly_ascending                             ... bench:     400,358 ns/iter (+/- 15,799) = 999 MB/s
+test sort::demo_merge_sort_mostly_descending                            ... bench:     442,029 ns/iter (+/- 64,175) = 904 MB/s
+test sort::demo_merge_sort_random                                       ... bench:   1,781,716 ns/iter (+/- 456,449) = 224 MB/s
+test sort::demo_merge_sort_strings                                      ... bench:   5,917,260 ns/iter (+/- 751,857) = 135 MB/s
+test sort::demo_quick_sort_big                                          ... bench:   6,500,204 ns/iter (+/- 336,238) = 984 MB/s
+test sort::demo_quick_sort_mostly_ascending                             ... bench:  21,249,391 ns/iter (+/- 195,910) = 18 MB/s
+test sort::demo_quick_sort_mostly_descending                            ... bench:  13,483,112 ns/iter (+/- 346,268) = 29 MB/s
+test sort::demo_quick_sort_random                                       ... bench:   1,516,928 ns/iter (+/- 59,895) = 263 MB/s
+test sort::demo_quick_sort_strings                                      ... bench:   6,492,140 ns/iter (+/- 344,902) = 123 MB/s
+test sort::par_sort_ascending                                           ... bench:      82,012 ns/iter (+/- 12,397) = 4877 MB/s
+test sort::par_sort_big                                                 ... bench:  13,132,641 ns/iter (+/- 326,766) = 487 MB/s
+test sort::par_sort_descending                                          ... bench:     130,468 ns/iter (+/- 19,265) = 3065 MB/s
+test sort::par_sort_expensive                                           ... bench:  60,290,980 ns/iter (+/- 311,697) = 6 MB/s
+test sort::par_sort_mostly_ascending                                    ... bench:     415,711 ns/iter (+/- 20,542) = 962 MB/s
+test sort::par_sort_mostly_descending                                   ... bench:     441,085 ns/iter (+/- 3,774) = 906 MB/s
+test sort::par_sort_random                                              ... bench:   1,352,090 ns/iter (+/- 10,657) = 295 MB/s
+test sort::par_sort_strings                                             ... bench:   4,791,904 ns/iter (+/- 88,674) = 166 MB/s
+test sort::par_sort_unstable_ascending                                  ... bench:      46,817 ns/iter (+/- 72) = 8543 MB/s
+test sort::par_sort_unstable_big                                        ... bench:   4,967,357 ns/iter (+/- 203,316) = 1288 MB/s
+test sort::par_sort_unstable_descending                                 ... bench:      70,350 ns/iter (+/- 184) = 5685 MB/s
+test sort::par_sort_unstable_expensive                                  ... bench:  72,153,678 ns/iter (+/- 1,442,308) = 5 MB/s
+test sort::par_sort_unstable_mostly_ascending                           ... bench:     336,994 ns/iter (+/- 7,246) = 1186 MB/s
+test sort::par_sort_unstable_mostly_descending                          ... bench:     351,832 ns/iter (+/- 16,425) = 1136 MB/s
+test sort::par_sort_unstable_random                                     ... bench:     752,073 ns/iter (+/- 33,513) = 531 MB/s
+test sort::par_sort_unstable_strings                                    ... bench:   4,405,900 ns/iter (+/- 431,600) = 181 MB/s
+test str_split::parallel_space_char                                     ... bench:   1,229,117 ns/iter (+/- 15,672)
+test str_split::parallel_space_fn                                       ... bench:     781,100 ns/iter (+/- 10,247)
+test str_split::serial_space_char                                       ... bench:   3,164,105 ns/iter (+/- 15,624)
+test str_split::serial_space_fn                                         ... bench:   1,506,682 ns/iter (+/- 16,352)
+test str_split::serial_space_str                                        ... bench:   2,437,795 ns/iter (+/- 12,379)
+test tsp::bench::dj10                                                   ... bench:  14,426,661 ns/iter (+/- 1,031,863)
+test vec_collect::vec_i::with_collect                                   ... bench:   2,089,226 ns/iter (+/- 57,180)
+test vec_collect::vec_i::with_collect_into_vec                          ... bench:   2,085,606 ns/iter (+/- 45,255)
+test vec_collect::vec_i::with_collect_into_vec_reused                   ... bench:   2,070,933 ns/iter (+/- 55,834)
+test vec_collect::vec_i::with_fold                                      ... bench:  36,324,850 ns/iter (+/- 4,653,409)
+test vec_collect::vec_i::with_linked_list_collect_vec                   ... bench:  27,246,692 ns/iter (+/- 1,121,602)
+test vec_collect::vec_i::with_linked_list_collect_vec_sized             ... bench:  26,858,352 ns/iter (+/- 891,921)
+test vec_collect::vec_i::with_linked_list_map_reduce_vec_sized          ... bench:  26,909,862 ns/iter (+/- 561,940)
+test vec_collect::vec_i::with_vec_vec_sized                             ... bench:  26,884,905 ns/iter (+/- 839,335)
+test vec_collect::vec_i_filtered::with_collect                          ... bench:  27,982,012 ns/iter (+/- 399,503)
+test vec_collect::vec_i_filtered::with_fold                             ... bench:  38,446,099 ns/iter (+/- 4,071,556)
+test vec_collect::vec_i_filtered::with_linked_list_collect_vec          ... bench:  32,002,728 ns/iter (+/- 645,297)
+test vec_collect::vec_i_filtered::with_linked_list_collect_vec_sized    ... bench:  31,684,330 ns/iter (+/- 658,340)
+test vec_collect::vec_i_filtered::with_linked_list_map_reduce_vec_sized ... bench:  27,995,539 ns/iter (+/- 613,365)
+test vec_collect::vec_i_filtered::with_vec_vec_sized                    ... bench:  28,247,576 ns/iter (+/- 790,072)
 
 test result: ok. 0 passed; 0 failed; 4 ignored; 116 measured; 0 filtered out
 
