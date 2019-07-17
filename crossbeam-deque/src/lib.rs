@@ -106,6 +106,8 @@ use std::sync::Arc;
 
 #[cfg(not(feature = "use-hazptr"))]
 pub use debra::{Config, CONFIG};
+#[cfg(feature = "use-hazptr")]
+pub use hazptr::{Config, CONFIG};
 
 #[cfg(not(feature = "use-hazptr"))]
 use debra::{self as reclaimer, Debra as Reclaimer, Guard, Owned};
@@ -337,6 +339,8 @@ impl<T> Worker<T> {
     pub fn new_fifo() -> Worker<T> {
         #[cfg(not(feature = "use-hazptr"))]
         CONFIG.init_once(|| Config::with_params(128, 0));
+        #[cfg(feature = "use-hazptr")]
+        CONFIG.init_once(|| Config::with_params(!0));
 
         let buffer = Buffer::alloc(MIN_CAP);
 
@@ -368,6 +372,8 @@ impl<T> Worker<T> {
     pub fn new_lifo() -> Worker<T> {
         #[cfg(not(feature = "use-hazptr"))]
         CONFIG.init_once(|| Config::with_params(128, 0));
+        #[cfg(feature = "use-hazptr")]
+        CONFIG.init_once(|| Config::with_params(!0));
 
         let buffer = Buffer::alloc(MIN_CAP);
 

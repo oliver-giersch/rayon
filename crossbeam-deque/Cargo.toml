@@ -34,3 +34,6 @@ hazptr = { git = "https://github.com/oliver-giersch/hazptr", optional = true }
 version = "0.6.5"
 [dev-dependencies.rand]
 version = "0.6"
+
+[profile.release]
+lto = true
