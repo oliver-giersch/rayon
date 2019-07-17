@@ -22,7 +22,7 @@ crossbeam-utils = "0.6.5"
 
 [dependencies.crossbeam-deque]
 git = "https://github.com/oliver-giersch/crossbeam-deque-0-7-1-fork"
-branch = "with_epoch"
+branch = "with_debra"
 
 [dev-dependencies]
 rand = "0.6"

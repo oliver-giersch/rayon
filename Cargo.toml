@@ -22,7 +22,7 @@ rayon-core = { version = "1.5.0", path = "rayon-core" }
 
 [dependencies.crossbeam-deque]
 git = "https://github.com/oliver-giersch/crossbeam-deque-0-7-1-fork"
-branch = "with_epoch"
+branch = "with_debra"
 
 # This is a public dependency!
 [dependencies.either]
