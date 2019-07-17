@@ -17,9 +17,12 @@ categories = ["concurrency"]
 [dependencies]
 num_cpus = "1.2"
 lazy_static = "1"
-crossbeam-deque = "0.6.3"
 crossbeam-queue = "0.1.2"
 crossbeam-utils = "0.6.5"
+
+[dependencies.crossbeam-deque]
+git = "https://github.com/oliver-giersch/crossbeam-deque-0-7-1-fork"
+branch = "with_epoch"
 
 [dev-dependencies]
 rand = "0.6"

@@ -19,7 +19,10 @@ exclude = ["ci"]
 
 [dependencies]
 rayon-core = { version = "1.5.0", path = "rayon-core" }
-crossbeam-deque = "0.6.3"
+
+[dependencies.crossbeam-deque]
+git = "https://github.com/oliver-giersch/crossbeam-deque-0-7-1-fork"
+branch = "with_epoch"
 
 # This is a public dependency!
 [dependencies.either]

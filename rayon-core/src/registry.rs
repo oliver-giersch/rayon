@@ -1,5 +1,6 @@
-use crossbeam_deque::{self as deque, Pop, Steal, Stealer, Worker};
+use crossbeam_deque::{Steal, Stealer, Worker};
 use crossbeam_queue::SegQueue;
+
 #[cfg(rayon_unstable)]
 use internal::task::Task;
 #[cfg(rayon_unstable)]
@@ -19,7 +20,7 @@ use std::ptr;
 #[allow(deprecated)]
 use std::sync::atomic::ATOMIC_USIZE_INIT;
 use std::sync::atomic::{AtomicUsize, Ordering};
-use std::sync::{Arc, Once, ONCE_INIT};
+use std::sync::{Arc, Once};
 use std::thread;
 use std::usize;
 use unwind;
@@ -161,7 +162,7 @@ pub(super) struct Registry {
 /// Initialization
 
 static mut THE_REGISTRY: Option<&'static Arc<Registry>> = None;
-static THE_REGISTRY_SET: Once = ONCE_INIT;
+static THE_REGISTRY_SET: Once = Once::new();
 
 /// Starts the worker threads (if that has not already happened). If
 /// initialization has not already occurred, use the default
@@ -222,18 +223,22 @@ impl Registry {
         let n_threads = builder.get_num_threads();
         let breadth_first = builder.get_breadth_first();
 
-        let (workers, stealers): (Vec<_>, Vec<_>) = (0..n_threads)
+        let workers: Vec<_> = (0..n_threads)
             .map(|_| {
                 if breadth_first {
-                    deque::fifo()
+                    Worker::new_fifo()
                 } else {
-                    deque::lifo()
+                    Worker::new_lifo()
                 }
             })
-            .unzip();
+            .collect();
 
         let registry = Arc::new(Registry {
-            thread_infos: stealers.into_iter().map(ThreadInfo::new).collect(),
+            thread_infos: workers
+                .iter()
+                .map(Worker::stealer)
+                .map(ThreadInfo::new)
+                .collect(),
             sleep: Sleep::new(),
             injected_jobs: SegQueue::new(),
             terminate_latch: CountLatch::new(),
@@ -319,7 +324,7 @@ impl Registry {
         self.thread_infos.len()
     }
 
-    pub(super) fn handle_panic(&self, err: Box<Any + Send>) {
+    pub(super) fn handle_panic(&self, err: Box<dyn Any + Send>) {
         match self.panic_handler {
             Some(ref handler) => {
                 // If the customizable panic handler itself panics,
@@ -674,13 +679,7 @@ impl WorkerThread {
     /// bottom.
     #[inline]
     pub(super) unsafe fn take_local_job(&self) -> Option<JobRef> {
-        loop {
-            match self.worker.pop() {
-                Pop::Empty => return None,
-                Pop::Data(d) => return Some(d),
-                Pop::Retry => {}
-            }
-        }
+        self.worker.pop()
     }
 
     /// Wait until the latch is set. Try to keep busy by popping and
@@ -763,7 +762,7 @@ impl WorkerThread {
                 loop {
                     match victim.stealer.steal() {
                         Steal::Empty => return None,
-                        Steal::Data(d) => {
+                        Steal::Success(d) => {
                             log!(StoleWork {
                                 worker: self.index,
                                 victim: victim_index
