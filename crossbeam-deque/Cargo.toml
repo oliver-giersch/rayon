@@ -27,8 +27,7 @@ repository = "https://github.com/crossbeam-rs/crossbeam"
 use-hazptr = ["hazptr"]
 
 [dependencies]
-debra = { path = "../../debra", features = ["bag-size-4"] }
-#debra = { git = "https://github.com/oliver-giersch/debra", features = ["bag-size-1"] }
+debra = { git = "https://github.com/oliver-giersch/debra", features = ["bag-size-4"] }
 hazptr = { git = "https://github.com/oliver-giersch/hazptr", optional = true }
 
 [dependencies.crossbeam-utils]
